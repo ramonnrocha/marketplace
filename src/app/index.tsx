@@ -1,12 +1,14 @@
-import { router } from "expo-router";
-import { Text, TouchableOpacity, View } from "react-native";
+import { Redirect } from "expo-router";
 
-export default function Index() {
-  return (
-    <View>
-      <TouchableOpacity onPress={() => router.push("/login")}>
-        <Text className="text_colo">Welcome to the Marketplace App!</Text>
-      </TouchableOpacity>
-    </View>
-  );
+export default function App() {
+  const userData = {
+    token: "1201273g1b1023192312312sdasfdfg",
+    name: "John Doe",
+  };
+
+  if (!userData.token) {
+    return <Redirect href="/(private)/home" />;
+  }
+
+  return <Redirect href="/login" />;
 }
